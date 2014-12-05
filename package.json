@@ -1,0 +1,34 @@
+{
+  "name": "node-redis-queue-web-demo",
+  "version": "0.0.1",
+  "description":
+    "A simple web app that uses Express, Jade and Stylus to demonstrate offloading a task to a worker process using node-redis-queue",
+  "main": "web.js",
+  "author": "Craig Johannsen",
+  "license": "MIT",
+  "keywords": ["example", "demo", "scalable", "web", "app", "heroku", "redis", "node-redis-queue", "queueing",
+               "send", "consume", "work-queue", "job-queue"],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cwjohan/node-redis-queue-web-demo"
+  },
+  "scripts": {
+    "clean": "bash script/clean",
+    "start": "node web.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.10.0",
+    "connect-redis": "^2.1.0",
+    "errorhandler": "1.1.x",
+    "express": "4.6.x",
+    "express-session": "^1.9.2",
+    "jade": "1.4.x",
+    "morgan": "1.5.x",
+    "node-redis-queue": "^0.2.4",
+    "request": "^2.49.0",
+    "serve-favicon": "2.0.x",
+    "stylus": "0.47.x"
+  },
+  "engines": { "node": ">=0.10.29" },
+  "os": ["win32", "win64", "linux"]
+}
