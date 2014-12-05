@@ -30,7 +30,6 @@ app.connect(arity, function () {
   web.set('views', path.join(__dirname, 'views'));
   web.set('view engine', 'jade');
   web.use(bodyParser.urlencoded({extended: false}))
-  //web.use(bodyParser.json());
   web.use(serveFavicon(path.join(__dirname, 'public/images/Favicon.png')));
   web.use(app.getSession());
   web.use(logger(isDevelopment() ? 'dev' : 'combined'));
