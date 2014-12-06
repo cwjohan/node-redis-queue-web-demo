@@ -25,7 +25,7 @@ app.connect(arity, function () {
 
   // Options:
   routes.setOptions({
-    title: 'Node Redis Queue Demo App',
+    title: 'Node Redis Queue Demo Web App',
   });
 
   // Middleware:

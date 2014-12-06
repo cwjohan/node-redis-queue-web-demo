@@ -8,15 +8,34 @@ the Submit button, the page at each URL is downloaded and an SHA1
 value is computed for the page body. When complete, the URL and
 SHA1 values are displayed on this app's main page.
 
+While most people would not find such SHA1 values terribly useful,
+it illustrates how a web app may communicate with one or more
+background worker processes to which it offloads time-consuming
+tasks. The web app puts URLs in a queue which is consumed by
+the worker process, which computes SHA1 values and returns the
+results in a separate result queue specific to the session ID of the user.
+
 ##Installation
 
     git clone https://github.com/cwjohan/node-redis-queue-web-demo.git
 
 ##Run the demo
 
+To run using foreman,
+
     npm start
 
+Otherwise, in separate console windows, run
+
+    node worker.js
+
+    node web.js
+
 ##Environment Variables
+
+Note that when running under foreman, the values for these enviornment
+variables may be picked up from the .env file or from the `-p` parameter
+on the foreman command line.
 
 ####PORT
 
@@ -33,7 +52,7 @@ Set this to indicate how many URLs are to be scraped in parallel. Defaults to 1.
 
 ##Main Application Components
 
-###web.js
+###Program web.js
 
 Creates an Express HTTP server to listen on the given port.
 Dispatches `GET /` which displays the home page, home.jade.
@@ -45,7 +64,11 @@ which does the scraping and SHA1 computation. The results are
 returned in a `results` variable, an array of URL and SHA1 values,
 which subsequently is displayed on the home page.
 
-###routes/home.js
+In 'thrifty' mode, this program runs `app.consumeJobRequests()`, which
+simulates the background worker process but, actually, runs it in the
+same process. This allows everything to run in a single process.
+
+###Module routes/home.js
 
 Creates a singular instance of a Home object, which has just one function: routeMe.
 
@@ -59,7 +82,15 @@ a results array.  When it is the last data item (i.e., when `isDone` is true), t
 home.jade page is rendered using the page title option setting, the current urlsText
 value, and the results array.
 
-###app/index.js
+###Program worker.js
+
+This program is meant to run in a separate process from the web.js program, assuming
+we are not running the app in 'thrifty' mode.
+
+It does the difficult, time-consuming job of retrieving the web pages corresponding to
+the URLs it obtains from the job queue and computing an SHA1 value for each one.
+
+###Module app/index.js
 
 ####connect(arity, cb)
 
@@ -113,3 +144,21 @@ is returned in the result queue, such as, for example:
 
     { url: 'http://our-stories.org', err: 'Website not found' }
 
+###Page template views/home.jade
+
+This is a Jade page template. It is the main and only page displayed by the web app.
+Initially, there are no results to display, though the input textarea is initialized
+with some example URLs. The user must click the `Submit` button to get some results.
+
+If home.jade is modified, the effect of the changes will be visible on the next page
+view. No server restart is necessary.
+
+###Page template views/layour.jade
+
+Provides page header info for the home page.
+
+###Styleheet template public/stylesheets/style.styl
+
+This is a Stylus styleheet template. The style.css stylesheet is re-generated from it
+any time a change is made. Thus, the effect of stylesheet template changes may seen
+on the next page view. No server restart is necessary.
