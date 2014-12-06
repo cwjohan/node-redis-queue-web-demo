@@ -54,6 +54,7 @@ module.exports.getSha1Results = function(sessID, urls, cb) {
   }
   var resultqName = 'demo:rq.' + sessID;
   var resultq = qmgr.createQueue(resultqName);
+  resultq.clear();
   var expectedResultCnt = 0;
   for(i in urls) {
     if (! urls[i]) continue;
@@ -100,6 +101,7 @@ module.exports.consumeJobRequests = function() {
     var code = resp ? resp.statusCode : undefined;
     var msg = err ? err.message : 'status=' + (statusCodes[code] || code);
     if (msg === 'getaddrinfo ENOTFOUND') msg = 'Website not found';
+    else if (msg === 'getaddrinfo EAGAIN') msg = 'Data not available - try again';
     return msg;
   }
 }

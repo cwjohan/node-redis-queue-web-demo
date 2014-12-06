@@ -18,7 +18,10 @@ var routes = require('./routes'); // loads ./routes/index.js
 var app = require('./app');
 app.connect(arity, function () {
   console.log('app connected to redis-server');
-  if (thrifty) app.consumeJobRequests();
+  if (thrifty) {
+    console.log('Thrifty mode');
+    app.consumeJobRequests();
+  }
 
   // Options:
   routes.setOptions({
