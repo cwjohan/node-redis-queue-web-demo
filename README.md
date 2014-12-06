@@ -29,6 +29,8 @@ Otherwise, in separate console windows, run
 
     node worker.js
 
+and
+
     node web.js
 
 ##Environment Variables
@@ -153,7 +155,7 @@ with some example URLs. The user must click the `Submit` button to get some resu
 If home.jade is modified, the effect of the changes will be visible on the next page
 view. No server restart is necessary.
 
-###Page template views/layour.jade
+###Page template views/layout.jade
 
 Provides page header info for the home page.
 
