@@ -4,18 +4,19 @@ block content
   h1= title
   p.greeting.
     Welcome to the #{title}. Enter one or more URLs below. Then press the
-    Submit button. For each URL, a SHA1 value will be computed.
+    Submit button. For each URL, an SHA1 value will be computed.
   .urlinput
     form(action='/urls', method='post')
-      textarea(name='urlsText', autofocus, rows=6, cols=80, maxlength=1024)= urls
-      button(type='submit') Submit
-  .results
-    ul
-      - for(var k in results)
-        li
-          .url= results[k].url
-          .err= results[k].err
-          .sha1= results[k].sha1
+      div
+        textarea(name='urlsText', autofocus, rows=6, cols=80, maxlength=1024)= urls
+      div
+        button(type='submit') Submit
+  ul.results
+    - for(var k in results)
+      li
+        .url= results[k].url
+        .err= results[k].err
+        .sha1= results[k].sha1
 
     
 
