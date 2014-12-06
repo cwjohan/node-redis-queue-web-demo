@@ -11,7 +11,7 @@ app.connect(arity, function () {
   app.consumeJobRequests();
 
   function shutDown() {
-    console.log('Shutting server down. No longer listening on port ' + port + '.');
+    console.log('Shutting worker down.');
     process.exit();
   }
 }); // end connect
