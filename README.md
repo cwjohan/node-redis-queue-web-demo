@@ -19,9 +19,15 @@ results in a separate result queue specific to the session ID of the user.
 
     git clone https://github.com/cwjohan/node-redis-queue-web-demo.git
 
+and then
+
+    npm install
+
 ##Run the demo
 
-To run using foreman,
+First, ensure that redis-server is running locally.
+
+Then, to run using foreman,
 
     npm start
 
@@ -32,6 +38,16 @@ Otherwise, in separate console windows, run
 and
 
     node web.js
+
+##Access the Demo on Heroku
+
+Click [here](https://node-redis-queue-web-demo.herokuapp.com) to see the demo already deployed on Heroku.
+
+
+If the app has been sleeping, it make take a momement to wake up and may be a little sluggish at first.
+It currently is running in 'thrifty' mode, which is reasonably fast, but not as fast as it could be.
+When tested with a separate worker dyno, it was very fast. One could deploy two worker dynos to make it
+go even faster.
 
 ##Environment Variables
 
@@ -159,7 +175,7 @@ view. No server restart is necessary.
 
 Provides page header info for the home page.
 
-###Styleheet template public/stylesheets/style.styl
+###Stylesheet template public/stylesheets/style.styl
 
 This is a Stylus styleheet template. The style.css stylesheet is re-generated from it
 any time a change is made. Thus, the effect of stylesheet template changes may seen
