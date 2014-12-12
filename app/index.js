@@ -43,8 +43,8 @@ module.exports.getSession = function() {
   return session({
     store: store,
     secret: cookieSecret,
-    resave: false,
-    saveUninitialized: false
+    resave: true,
+    saveUninitialized: true
   });
 };
 
