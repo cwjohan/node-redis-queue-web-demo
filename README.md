@@ -58,6 +58,17 @@ as the web server. Defaults to undefined.
 
 Set this to indicate how many URLs are to be scraped in parallel. Defaults to 1.
 
+####QUEUE_CONFIG_FILE
+
+Set this to indicate the location of your node-redis-queue config file. If not set,
+it defaults to the one which is installed with node-redis-queue and which expects
+a local instance of redis-server to be running.
+
+####COOKIE_SECRET
+
+Set this to a secret which will be used to sign your session cookies.
+It defaults to 'sexier than my cat'.
+
 ##Main Application Components
 
 ###Program web.js
