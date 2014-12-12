@@ -11,7 +11,7 @@ var logger = require('morgan');
 var errorHandler = require('errorhandler');
 
 var thrifty = process.env.THRIFTY;
-var arity = thrifty ? (process.env.WORK_QUEUE_ARITY || 2) : 1;
+var arity = thrifty ? 2 : 1;
 var port = process.env.PORT || 3000;
 
 var routes = require('./routes'); // loads ./routes/index.js

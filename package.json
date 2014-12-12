@@ -1,6 +1,6 @@
 {
   "name": "node-redis-queue-web-demo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description":
     "A simple web app that uses Express, Jade and Stylus to demonstrate offloading a task to a worker process using node-redis-queue",
   "main": "web.js",
@@ -25,7 +25,7 @@
     "foreman": "^1.1.0",
     "jade": "1.4.x",
     "morgan": "1.5.x",
-    "node-redis-queue": "^0.2.4",
+    "node-redis-queue": "^0.2.5",
     "request": "^2.49.0",
     "serve-favicon": "2.0.x",
     "stylus": "0.47.x"

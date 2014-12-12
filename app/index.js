@@ -35,15 +35,16 @@ module.exports.connect = function(_arity, cb) {
 };
 
 module.exports.getSession = function() {
+  var getClient = require('node-redis-queue').getClient;
   var cookieSecret = process.env.COOKIE_SECRET || 'sexier than my cat';
   var session = require('express-session');
   var RedisStore = require('connect-redis')(session);
-  var store = new RedisStore({client: qmgr.client});
+  var store = new RedisStore({client: getClient()});
   return session({
     store: store,
     secret: cookieSecret,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false
   });
 };
 
