@@ -39,16 +39,6 @@ and
 
     node web.js
 
-##Access the Demo on Heroku
-
-Click [here](https://node-redis-queue-web-demo.herokuapp.com) to see the demo already deployed on Heroku.
-
-
-If the app has been sleeping, it make take a momement to wake up and may be a little sluggish at first.
-It currently is running in 'thrifty' mode, which is reasonably fast, but not as fast as it could be.
-When tested with a separate worker dyno, it was very fast. One could deploy two worker dynos to make it
-go even faster.
-
 ##Environment Variables
 
 Note that when running under foreman, the values for these enviornment
